@@ -9,7 +9,7 @@ description = "Seeded generator of malformed LLM output — broken JSON, stray f
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "JaydenCJ" }]
+authors = [{ name = "JaydenCJ", email = "aisingioro.kiyon@gmail.com" }]
 keywords = ["llm", "json", "fuzzing", "testing", "parser", "malformed", "corpus"]
 classifiers = [
     "Development Status :: 3 - Alpha",
