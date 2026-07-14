@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="640" viewBox="0 0 920 640" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14">
+  <!-- Terminal transcript of a real run of `sloppygen gen` and `sloppygen check`.
+       Text content is copied verbatim from an actual execution (seed 7 / seed 42). -->
+  <rect width="920" height="640" rx="10" fill="#0d1117"/>
+  <rect width="920" height="34" rx="10" fill="#161b22"/>
+  <rect y="20" width="920" height="14" fill="#161b22"/>
+  <circle cx="22" cy="17" r="6" fill="#ff5f57"/>
+  <circle cx="42" cy="17" r="6" fill="#febc2e"/>
+  <circle cx="62" cy="17" r="6" fill="#28c840"/>
+  <text x="460" y="22" fill="#8b949e" text-anchor="middle" font-size="12">sloppygen — realistic LLM breakage, on demand</text>
+  <g fill="#c9d1d9">
+    <text x="24" y="62"><tspan fill="#7ee787">$</tspan> sloppygen gen --shape chatter+trailing_comma --seed 7 --payload city.json</text>
+    <text x="24" y="88">{</text>
+    <text x="24" y="112">  "city": "Tokyo",</text>
+    <text x="24" y="136">  "population_m": 37.4<tspan fill="#f85149">,</tspan></text>
+    <text x="24" y="160">}</text>
+    <text x="24" y="188" fill="#d2a8ff">Let me know if you need anything else!</text>
+    <text x="24" y="228"><tspan fill="#7ee787">$</tspan> sloppygen corpus --seed 42 --count 62 -o corpus.jsonl</text>
+    <text x="24" y="252" fill="#8b949e">[corpus] wrote 62 samples (30 shape combinations, seed 42, stack 1) -&gt; corpus.jsonl</text>
+    <text x="24" y="292"><tspan fill="#7ee787">$</tspan> sloppygen check corpus.jsonl --cmd "python3 examples/naive_parser.py"</text>
+    <text x="24" y="318" fill="#8b949e">shape                  n  recovered  rejected  wrong  crash</text>
+    <text x="24" y="342">trailing_comma         3          0         0      0      <tspan fill="#f85149">3</tspan></text>
+    <text x="24" y="366">single_quotes          2          0         0      0      <tspan fill="#f85149">2</tspan></text>
+    <text x="24" y="390">nan_infinity           2          0         0      <tspan fill="#d29922">2</tspan>      0</text>
+    <text x="24" y="414">chatter                2          <tspan fill="#7ee787">2</tspan>         0      0      0</text>
+    <text x="24" y="438" fill="#8b949e">...                   (26 more shapes)</text>
+    <text x="24" y="462">totals                62         16         0      <tspan fill="#d29922">2</tspan>     <tspan fill="#f85149">44</tspan></text>
+    <text x="24" y="498">findings: <tspan fill="#f85149">46 (44 crash, 2 wrong)</tspan></text>
+    <text x="24" y="522">  <tspan fill="#f85149">crash</tspan>  0000-trailing_comma  json.decoder.JSONDecodeError: Expecting value: line 44</text>
+    <text x="24" y="546">  <tspan fill="#f85149">crash</tspan>  0001-missing_comma  json.decoder.JSONDecodeError: Expecting ',' delimiter: line 14</text>
+    <text x="24" y="570">  <tspan fill="#d29922">wrong</tspan>  0009-nan_infinity  parser returned {"summary": "The customer can't log in after...</text>
+    <text x="24" y="606" fill="#8b949e"># 62 deterministic samples, 44 crashes found before any user saw them.</text>
+  </g>
+</svg>
